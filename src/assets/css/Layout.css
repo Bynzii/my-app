@@ -1,0 +1,58 @@
+.layout__wrap {
+  height: 100dvh;
+  padding: 2rem;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 2rem;
+}
+.layout__screen {
+  width: 100%; max-width: 120rem; 
+  flex: 1;
+  background: var(--surface); border-radius: var(--radius);
+  box-shadow: 0 2px 12px rgba(88, 101, 242, .08);
+  overflow: hidden;
+}
+
+
+.layout__nav {
+  width: 100%; max-width: 120rem;
+  display: grid; grid-template-columns: repeat(8, 1fr);
+  gap: 1.2rem;
+  transition: grid-template-columns 0.3s ease;
+}
+.layout__nav-btn {
+  padding: 2rem 1rem;
+  display: flex; flex-direction: column; 
+  align-items: center; justify-content: center; gap: 0.8rem;
+  background: var(--surface); border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  text-decoration: none;
+  color: var(--text);
+  transition: all .15s;
+}
+.layout__nav-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-0.2rem);
+  box-shadow: 0 4px 12px rgba(88, 101, 242, .12);
+}
+.layout__nav-icon {
+  font-size: 28px;
+}
+.layout__nav-label {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+
+/*========== 모바일 ==========*/
+@media (max-width: 767px) {
+   .layout__nav {grid-template-columns: repeat(4, 1fr);}
+}
+
+
+@media (max-width: 480px) {
+  .layout__wrap {padding: 12px;}
+  .layout__nav {gap: 0.4rem;}
+  .layout__nav-btn {padding: 1rem; gap: 0;}
+}

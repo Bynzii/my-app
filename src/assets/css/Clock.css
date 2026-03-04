@@ -1,0 +1,24 @@
+.clock__wrap {
+  height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 1.2rem;
+}
+.clock__time {
+  display: flex; align-items: center;
+  gap: 0.4rem;
+  font-size: clamp(3rem, 8vw, 6rem); font-weight: 400;
+  color: var(--text);
+  letter-spacing: -2px; line-height: 1;
+}
+.clock__sep {font-weight: 300; color: var(--accent); animation: blink 1s step-end infinite;}
+@keyframes blink {
+  50% {opacity: 0.2;}
+}
+
+.clock__date {font-size: 1.4rem; color: var(--text-2); font-weight: 400;}
+.clock__day {
+  padding: 0.4rem 1.4rem;
+  background-color: var(--accent); color: #fff;
+  border-radius: 2rem;
+  font-size: 1.1rem; font-weight: 700; letter-spacing: 0.4px;
+}

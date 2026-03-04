@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:       #f0f2f8;
+  --surface:  #ffffff;
+  --text:     #1a1d2e;
+  --text-2:   #6b7080;
+  --border:   #e4e7f0;
+  --accent:   #5865f2;
+  --accent-2: #eb5757;
+  --accent-3: #f0a500;
+  --accent-4: #27ae8e;
+  --radius:   16px;
+  --font:     'Nunito', 'Noto Sans KR', sans-serif;
+}
+html {font-size: 62.5%;}
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100dvh;
+  margin: 0;
+}
+
+button {
+  font-family: var(--font);
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
