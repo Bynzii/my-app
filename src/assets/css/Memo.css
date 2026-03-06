@@ -1,0 +1,100 @@
+
+/* ------------------------------------------------------------------------- */
+/* Memo : 메모장 / 할일목록 추가, 제거 
+/* ------------------------------------------------------------------------- */
+.memo__wrap {
+  height: 100%;
+  overflow-y: auto;
+  display: flex; flex-direction: column; gap: 2rem;
+  padding: 2.4rem;
+}
+.memo__sec {display: flex; flex-direction: column; gap: 1rem;}
+.memo__tit {font-size: 1.5rem; font-weight: 700; color: var(--text);}
+
+/*----- 메모 영역 -----*/
+.memo__textarea { resize: none; outline: none;
+  width: 100%; min-height: 12rem;
+  padding: 1.2rem 1.4rem;
+  background-color: var(--bg); color: var(--text);
+  border: 1.5px solid var(--border); border-radius: 1.2rem;
+  font-family: var(--font); font-size: 1.3rem; line-height: 1.7;  
+  transition: border-color .15s;
+}
+.memo__textarea::placeholder {color: var(--text-2);}
+.memo__textarea:focus {border-color: var(--accent);}
+
+
+/*----- 할일 입력창 -----*/
+.memo__input-row {display: flex; gap: 0.8rem;}
+.memo__it { outline: none;
+  flex: 1;
+  padding: 0.8rem 1.2rem;
+  background: var(--bg);
+  border: 1.5px solid var(--border); border-radius: 1rem;
+  font-family: var(--font); font-size: 1.3rem; color: var(--text);
+  transition: border-color .15s;
+}
+.memo__it::placeholder {color: var(--text-2);}
+.memo__it:focus {border-color: var(--accent);}
+
+
+/*----- 추가 버튼 -----*/
+.memo__add-btn {
+  padding: 0.8rem 1.2rem;
+  background-color: var(--accent); color: #fff;
+  border: none; border-radius: 1rem;
+  font-family: var(--font); font-size: 1.3rem; font-weight: 700;
+  cursor: pointer; white-space: nowrap;
+  transition:  filter 0.15s;
+}
+.memo__add-btn:hover {filter: brightness(1.1);}
+
+
+/*----- 할일 목록 -----*/
+.memo__todo-list {display: flex; flex-direction: column; gap: 0.8rem;}
+.memo__todo-item {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1rem 1.2rem;
+  background-color: var(--bg); border-radius: 1rem;
+  border: 1.5px solid transparent;
+  transition: border-color .15s;
+}
+.memo__todo-item:hover {border-color: var(--border);}
+
+/* 체크박스 */
+.memo__todo-label {flex: 1; display: flex; align-items: center; gap: 1rem; cursor: pointer;}
+.memo__todo-label input[type="checkbox"] {display: none;}
+
+.memo__todo-text  {position: relative; padding-left: 2.8rem; font-size: 1.3rem; color: var(--text);}
+.memo__todo-text::before {content: '';
+  width: 2rem; height: 2rem;
+  position: absolute; left: 0; top: 50%;
+  border: 1.5px solid var(--border); border-radius: 0.6rem;
+  background: var(--surface);
+  transform: translateY(-50%);
+  transition: all .15s;
+}
+.memo__todo-item.done .memo__todo-text::before {
+  background: var(--accent); border-color: var(--accent);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.7 4.3l-7.4 7.4-3-3'  stroke='white' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: 1.4rem; background-repeat: no-repeat; background-position: center;
+}
+.memo__todo-item.done .memo__todo-text {text-decoration: line-through; color: var(--text-2);}
+
+/* 제거 버튼 */
+.memo__delete-btn { background: none; border: none;
+  font-size: 1.4rem; color: var(--text-2);
+  padding: 0.2rem 0.8rem;
+  border-radius: 0.6rem; cursor: pointer;
+  transition: all .15s;
+}
+.memo__delete-btn:hover {background: rgba(235, 87, 87, .1); color: var(--accent-2);}
+
+
+
+/*========== 모바일 ==========*/
+@media (max-width: 480px) {
+  .memo__wrap {
+    padding: 1.6rem;
+  }
+}

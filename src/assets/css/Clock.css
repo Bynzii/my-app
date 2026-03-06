@@ -1,3 +1,7 @@
+/* ------------------------------------------------------------------------- */
+/* clock : 현재 시간 
+/* ------------------------------------------------------------------------- */
+
 .clock__wrap {
   height: 100%;
   display: flex; flex-direction: column; align-items: center; justify-content: center;

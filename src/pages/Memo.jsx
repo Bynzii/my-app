@@ -25,7 +25,7 @@ function Memo() {
   return (
     <div className="memo__wrap">
       <div className="memo__sec">
-        <h2 className="meno__tit">📝 메모</h2>
+        <h2 className="memo__tit">📝 메모</h2>
         <textarea 
           className="memo__textarea"
           placeholder="자유롭게 메모하세용~"
@@ -49,20 +49,22 @@ function Memo() {
           <button className="memo__add-btn" onClick={addTodo}>추가</button>
         </div>
 
-        <div className="memo__todo-list">
+        <ul className="memo__todo-list">
           {todos.map((todo) => (
             <li key={todo.id} className={`memo__todo-item ${todo.done ? 'done' : ''}`}>
-              <input 
-                type="checkbox" 
-                checked={todo.done}
-                onChange={() => toggleTodo(todo.id)}
-              />
+              <label className="memo__todo-label">
+                <input 
+                  type="checkbox" 
+                  checked={todo.done}
+                  onChange={() => toggleTodo(todo.id)}
+                />
 
-              <span className="memo__todo-text">{todo.text}</span>
+                <span className="memo__todo-text">{todo.text}</span>
+              </label>
               <button className="memo__delete-btn" onClick={() => deleteTodo(todo.id)}>x</button>
             </li>
           ))}
-        </div>
+        </ul>
       </div>
     </div>
   )
