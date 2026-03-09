@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Clock from "./pages/Clock";
 import Memo from "./pages/Memo";
 import Fortune from "./pages/Fortune";
+import Calendar from "./pages/Calendar";
 
 function App() {
   return(
@@ -15,6 +16,7 @@ function App() {
           <Route path="/clock" element={<Clock />} />
           <Route path="/memo" element={<Memo />} />
           <Route path="/fortune" element={<Fortune />} />
+          <Route path="/Calendar" element={<Calendar />} />
         </Route>
       </Routes>
     </BrowserRouter>

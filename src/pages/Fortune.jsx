@@ -2,10 +2,10 @@ import { useState } from 'react';
 import '../assets/css/Fortune.css'
 
 const fortunes = [
-  {grade: '대길', emoji: '🌟', text: '오늘은 모든 일이 잘 풀립니다!'},
-  {grade: '길', emoji: '☀️', text: '좋은 기운이 함께합니다.'},
-  {grade: '평', emoji: '🌙', text: '평온한 하루가 될 거예요.'},
-  {grade: '흉', emoji: '🌧', text: '오늘은 신중하게 행동하세요.'},
+  {grade: '대길', className: 'great', emoji: '🌟', text: '오늘은 모든 일이 잘 풀립니다!'},
+  {grade: '길', className: 'good', emoji: '☀️', text: '좋은 기운이 함께합니다.'},
+  {grade: '평', className: 'normal', emoji: '🌙', text: '평온한 하루가 될 거예요.'},
+  {grade: '흉', className: 'bad',  emoji: '🌧', text: '오늘은 신중하게 행동하세요.'},
 ]
 
 function Fortune() {
@@ -30,7 +30,7 @@ function Fortune() {
 
       {status === 'result' &&
         <div className="fortune__result">
-          <h4 className={`fortune__grade ${result.grade}`}>{result.grade}</h4>
+          <h4 className={`fortune__grade ${result.className}`}>{result.grade}</h4>
           <span className='emoji'>{result.emoji}</span>
           <span className='text'>{result.text}</span>
         </div>

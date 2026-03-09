@@ -9,7 +9,7 @@
   gap: 2rem;
 }
 .fortune__loading {
-  font-size: 1.6rem; line-height: 2;
+  font-size: 2rem; line-height: 2;
   text-align: center; color: var(--text-2);
   animation: pulse 1s ease-in-out infinite;
 }
@@ -27,16 +27,16 @@
   border: 1.5px solid var(--border);
   text-align: center;
 }
+.fortune__result .fortune__grade {font-size: 3rem; font-weight: 700;}
 .fortune__result .emoji {font-size: 5rem;}
-.fortune__result .grade {font-size: 2rem; font-weight: 700;}
+.fortune__result .text {font-size: 1.6rem; line-height: 1.7; color: var(--text);}
 
 /* 등급별 색상 */
-.fortune__grade.대길 { color: #f0a500; }
-.fortune__grade.길   { color: var(--accent-4); }
-.fortune__grade.평   { color: var(--text-2); }
-.fortune__grade.흉   { color: var(--accent-2); }
+.fortune__grade.great  { color: #f0a500; }
+.fortune__grade.good   { color: var(--accent-4); }
+.fortune__grade.normal { color: var(--text-2); }
+.fortune__grade.bad    { color: var(--accent-2); }
 
-.fortune__text {font-size: 1.6rem; line-height: 1.7; color: var(--text);}
 
 .fortune__btn {
   padding: 1.2rem 3.2rem;
@@ -47,8 +47,8 @@
   transition: all .15s;
   box-shadow: 0 4px 14px rgba(88, 101, 242, .3);
 }
-
 .fortune__btn:hover {filter: brightness(1.08); transform: translateY(-2px);}
+
 
 /*========== 모바일 ==========*/
 @media (max-width: 480px) {
