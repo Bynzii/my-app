@@ -1,0 +1,147 @@
+/* ------------------------------------------------------------------------- */
+/* calendar : 캘린더 + 일정 추가/삭제
+/* ------------------------------------------------------------------------- */
+.cal__wrap {
+  height: 100%;
+  display: flex; flex-direction: column; gap: 1.6rem;
+  padding: 2.4rem; 
+  overflow-y: auto;
+}
+
+/*----- 헤더 -----*/
+.cal__header {display: flex; align-items: center; justify-content: space-between; gap: 1rem;}
+.cal__tit {font-size: 1.6rem; font-weight: 700;}
+.cal__nav-btn {
+  width: 3.2rem; height: 3.2rem; 
+  display: flex; align-items: center; justify-content: center;
+  background-color: var(--bg);
+  border: 1.5px solid var(--border); border-radius: 0.8rem;
+  font-size: 1.8rem; color: var(--text); 
+  cursor: pointer;
+  transition: all .15s ease;
+}
+.cal__nav-btn:hover {border-color: var(--accent); color: var(--accent);}
+
+
+/*----- 날짜 그리드 -----*/
+.cal__grid {display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.4rem;}
+.cal__day-name {
+  text-align: center; 
+  font-size: 1.1rem; font-weight: 700; color: var(--text-2); 
+  padding-block: 2rem; 
+  background-color: aliceblue; border-radius: 0.8rem;
+}
+.cal__day {
+  aspect-ratio: 1;
+  display: flex; flex-direction: column; 
+  gap: 0.3rem; padding: 0.5rem;
+  border-radius: 0.8rem;
+  border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background .15s;
+  position: relative;
+}
+.cal__day:hover:not(.empty) {background: var(--bg);}
+.cal__day.empty {cursor: default; pointer-events: none;}
+.cal__day-num {font-size: 1.2rem; font-weight: 500;}
+
+/* 오늘 */
+.cal__day.today .cal__day-num {
+  width: 2.8rem; height: 2.8rem;
+  display: flex; align-items: center; justify-content: center;
+  background-color: var(--accent); color: #fff;
+  border-radius: 50%;
+  font-weight: 700;
+}
+
+/* 일요일 */
+.cal__day-name.sun,
+.cal__day.sun .cal__day-num {color: var(--accent-2); }
+
+/* 토요일 */
+.cal__day-name.sat,
+.cal__day.sat .cal__day-num {color: var(--accent); }
+
+/* 스케줄 표시 점 */
+.cal__dot {
+  width: 0.4rem; height: 0.4rem;
+  background-color: var(--accent); border-radius: 50%;
+}
+
+/*----- 스케줄 목록 -----*/
+.cal__schedule-list {
+  display: flex; flex-direction: column; gap: 0.8rem;
+  padding-top: 1.6rem; 
+  border-top: 1.5px solid var(--border);
+}
+.cal__schedule-tit {font-size: 1.4rem; font-weight: 700;}
+.cal__no-schedule {font-size: 1.3rem; color: var(--text-2);}
+
+.cal__schedule-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.8rem 1.2rem;
+  background: var(--bg); border-radius: 0.8rem;
+  font-size: 1.3rem;
+}
+.cal__schedule-item button {
+  background: none; border: none;
+  padding: 0.2rem 0.6rem;
+  color: var(--text-2); border-radius: 0.4rem;
+  cursor: pointer;
+  transition: all .15s;
+}
+.cal__schedule-item button:hover {background: rgba(235, 87, 87, .1); color: var(--accent-2);}
+
+
+/*----- 모달 -----*/
+.cal__modal-overlay {
+  position: fixed; inset: 0; z-index: 100;
+  background: rgba(0,0,0,.4);
+  display: flex; align-items: center; justify-content: center;
+}
+.cal__modal {
+  background: var(--surface); border-radius: var(--radius);
+  padding: 2.4rem;
+  width: 90%; max-width: 36rem;
+  display: flex; flex-direction: column; gap: 1.6rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, .12);
+}
+.cal__modal h3 {font-size: 1.5rem; font-weight: 700;}
+.cal__modal-input {
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  background: var(--bg); 
+  border: 1.5px solid var(--border); border-radius: 1rem;
+  font-family: var(--font); font-size: 1.3rem;
+  color: var(--text);
+  outline: none; transition: border-color .15s;
+}
+.cal__modal-input:focus {border-color: var(--accent);}
+
+.cal__modal-btns {display: flex; justify-content: flex-end; gap: 0.8rem;}
+.cal__modal-btns button {
+  padding: 0.8rem 1.6rem;  border-radius: 0.8rem;
+  font-family: var(--font); font-size: 1.3rem;
+  cursor: pointer;
+}
+.cal__modal-cancle {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  transition: all .15s;
+}
+.cal__modal-cancle:hover {border-color: var(--accent); color: var(--accent); font-weight: 700;}
+
+.cal__modal-add {
+  background: var(--accent); color: #fff;
+  border: none;
+  font-weight: 700;
+  transition: filter .15s;
+}
+.cal__modal-add:hover {filter: brightness(1.1);}
+
+
+/*========== 모바일 ==========*/
+@media (max-width: 480px) {
+  .cal__wrap {padding: 1.6rem;}
+  .cal__day-num {font-size: 1rem;}
+}

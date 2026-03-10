@@ -57,12 +57,12 @@ function Calendar() {
   };
 
   // 달력 날짜 
-  const firstDay = new Date(year, month, 1).getDay();
-  const lastDate = new Date(year, month + 1, 0).getDate();
+  const firstDay = new Date(year, month, 1).getDay();       //이번달 1일이 무슨 요일인지 계산(0-6까지 숫자)
+  const lastDate = new Date(year, month + 1, 0).getDate();  //이번달 마지막날짜 
 
   const days = [];
-  for (let i = 0; i < firstDay; i++) days.push(null);
-  for (let i = 1; i <= lastDate; i++) days.push(i);
+  for (let i = 0; i < firstDay; i++) days.push(null);       //0-6까지 숫자만큼 null 빈칸
+  for (let i = 1; i <= lastDate; i++) days.push(i);         //1-31 숫자 추가
 
   const months = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'];
   const dayNames = ['일','월','화','수','목','금','토'];
@@ -73,32 +73,34 @@ function Calendar() {
       {/* 헤더 : 년,월 + 이전,다음 */}
       <div className="cal__header">
         <button className="cal__nav-btn" onClick={prevMonth}>‹</button>
-        <h2 className='cal__tit'>{year}년 {month[month]}</h2>
+        <h2 className='cal__tit'>{year}년 {months[month]}</h2>
         <button className="cal__nav-btn" onClick={nextMonth}>›</button>
       </div>
 
       {/* 요일 */}
       <div className="cal__grid">
         {dayNames.map((d, i) => (
-          <div key={i} className={`cal__day-name &{i === 0 ? 'sun' : ''}`}>{d}</div>
-        ))};
+          // 토, 일 요일에 클래스 추가(글씨 컬러)
+          <div key={i} className={`cal__day-name ${i === 6 ? 'sat' : ''} ${i === 0 ? 'sun' : ''}`}>{d}</div>
+        ))}
 
-        {/* 날짜 */}
+        {/* 날짜 : days의 배열만큼 반복 생성 */}
         {days.map((day, i) => {
-          const isToday = day === today.getDate() && month === today.getMonth() && year === today.getFullYear();
-          const hasSchedule = day && getSchedules(day).length > 0;
+          
+          const isToday = day === today.getDate() && month === today.getMonth() && year === today.getFullYear();  // 3개 조건에 다 맞아야 오늘날짜
+          const hasSchedule = day && getSchedules(day).length > 0;   //날짜에 스케줄이 있는지 체크
 
           return (
             <div 
               key={i} 
-              className={`cal__day ${!day ? 'empty' : ''}  ${isToday ? 'today' : ''} ${i % 7 === 0 ? 'sun' : ''}`}
-              onClick={() => {day && handleDayClick(day)}}  
+              className={`cal__day ${!day ? 'empty' : ''} ${isToday ? 'today' : ''} ${i % 7 === 6 ? 'sat' : ''} ${i % 7 === 0 ? 'sun' : ''}`}
+              onClick={() => {day && handleDayClick(day)}}  //day가 null이면 클릭 안되게
             >
               {day && <span className='cal__day-num'>{day}</span>}
-              {hasSchedule && <span className='cal__dot'></span>}
+              {hasSchedule && <span className='cal__dot'></span>}  {/* 날짜에 스케줄이 있으면 점 표시 */}
             </div>
           );
-        })};
+        })}
       </div>
 
       {/* 선택한 날짜 스케줄 목록 */}
@@ -115,13 +117,13 @@ function Calendar() {
           ))
         }
         </div>
-      )};
+      )}
 
       {/* 모달 */}
       {isOpen &&
         <div className='cal__modal-overlay' onClick={() => setIsopen(false)}>
           <div className="cal__modal" onClick={(e) => e.stopPropagation()}>
-            <h3>{moneh + 1}월 {selected}일 스케줄 추가</h3>
+            <h3>{month + 1}월 {selected}일 스케줄 추가</h3>
             <input 
               type="text" 
               className='cal__modal-input'
