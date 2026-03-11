@@ -77,8 +77,6 @@ function News() {
 
         </ul>
       }
-
-
     </div>
   )
 

@@ -7,6 +7,7 @@ import Memo from "./pages/Memo";
 import Fortune from "./pages/Fortune";
 import Calendar from "./pages/Calendar";
 import News from "./pages/News";
+import Weather from "./pages/Weather";
 
 function App() {
   return(
@@ -19,6 +20,7 @@ function App() {
           <Route path="/fortune" element={<Fortune />} />
           <Route path="/Calendar" element={<Calendar />} />
           <Route path="/News" element={<News />} />
+          <Route path="/Weather" element={<Weather />} />
         </Route>
       </Routes>
     </BrowserRouter>
