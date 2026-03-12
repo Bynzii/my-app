@@ -1,0 +1,18 @@
+/* ------------------------------------------------------------------------- */
+/* Game : 게임
+/* ------------------------------------------------------------------------- */ 
+.game__wrap {
+  height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+}
+.game__start {display: flex; flex-direction: column; gap: 2rem;}
+.game__desc {font-size: 1.5rem;}
+.game__btn { border: none; outline: none; 
+  padding: 1rem 2rem;
+  border: 1.5px solid var(--accent); border-radius: 1rem;
+  background-color: var(--accent); color: #fff;
+  font-family: var(--font); font-size: 1.6rem; font-weight: 500;
+  transition: all .15s;
+}
+.game__btn:hover {filter: brightness(1.1);}

@@ -19,6 +19,7 @@ function Weather() {
       const res = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}&units=metric&lang=kr`
       );
+
       const data = await res.json();
       if (data.cod !== 200) {
         setError('도시를 찾을 수 없어요');
@@ -36,6 +37,7 @@ function Weather() {
   // 현재 위치로 날씨 가져오기
   const fetchWeatherByLocation = () => {
     if (!navigator.geolocation) return;
+
     setLoading(true);
     setError(null);
     navigator.geolocation.getCurrentPosition(
@@ -83,13 +85,13 @@ function Weather() {
         <button type='button' className='wthr__loc-btn' onClick={fetchWeatherByLocation}>📍</button>
       </div>
 
-      {/* 로딩 */}
+      {/* 로딩 : 로딩중일때만 보임 */}
       {loading && <div className='wthr__loading'>불러오는 중...</div>}
 
-      {/* 에러 */}
+      {/* 에러 : 에러 있을때만 보임*/}
       {error && <div className='wthr__error'>{error}</div>}
 
-      {/* 날씨 결과 */}
+      {/* 날씨 결과 : 로딩이 끝났고, 날씨 데이터가 있을때 (둘다 true여야함) */}
       {!loading && weather && (
         <div className="wthr__card">
           <div className="wthr__city">
@@ -105,26 +107,26 @@ function Weather() {
             <div className="wthr__temp">{Math.round(weather.main.temp)}°C</div>
           </div>
 
-          <p className='wthr__desc'>{weather.wether[0].description}</p>
+          <p className='wthr__desc'>{weather.weather[0].description}</p>
 
           <div className="wthr__details">
-            <div className="wthr__detail-itme">
+            <div className="wthr__detail-item">
               <span className="wthr__detail-label">체감</span>
               <span className="wthr__detail-value">{Math.round(weather.main.feels_like)}°C</span>
             </div>
-            <div className="wthr__detail-itme">
+            <div className="wthr__detail-item">
               <span className="wthr__detail-label">습도</span>
               <span className="wthr__detail-value">{weather.main.humidity}%</span>
             </div>
-            <div className="wthr__detail-itme">
+            <div className="wthr__detail-item">
               <span className="wthr__detail-label">바람</span>
               <span className="wthr__detail-value">{weather.main.speed}m/s</span>
             </div>
-            <div className="wthr__detail-itme">
+            <div className="wthr__detail-item">
               <span className="wthr__detail-label">최저</span>
               <span className="wthr__detail-value">{Math.round(weather.main.temp_min)}°C</span>
             </div>
-            <div className="wthr__detail-itme">
+            <div className="wthr__detail-item">
               <span className="wthr__detail-label">최고</span>
               <span className="wthr__detail-value">{Math.round(weather.main.temp_max)}°C</span>
             </div>

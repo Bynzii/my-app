@@ -1,3 +1,90 @@
 /* ------------------------------------------------------------------------- */
 /* Weather : 날씨
 /* ------------------------------------------------------------------------- */ 
+.wthr__wrap {
+  height: 100%;
+  overflow-y: hidden;
+  display: flex; flex-direction: column; align-items: center; 
+  gap: 2rem; padding: 2.4rem;
+}
+
+/*----- 검색창 -----*/
+.wthr__search {
+  width: 100%; max-width: 48rem;
+  display: flex; gap: 0.8rem;
+}
+.wthr__it { outline: none;
+  flex: 1;
+  padding: 0.9rem 1.4rem;
+  background-color: var(--bg); color: var(--text);
+  border: 1.5px solid var(--border); border-radius: 1rem;
+  font-size: var(--font); font-size: 1.3rem;
+  transition: border-color .15s;
+}
+.wthr__it::placeholder {color: var(--accent);}
+.wthr__it:hover,
+.wthr__it:focus {border-color: var(--accent);}
+
+.wthr__search-btn { border: none;
+  padding: 0.9rem 1.6rem;
+  background-color: var(--accent); color: #fff;
+  border-radius: 1rem;
+  font-size: 1.3rem; font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: filter .15s;
+}
+.wthr__search-btn:hover { filter: brightness(1.1);}
+.wthr__loc-btn {
+  padding: 0.9rem 1.6rem;
+  background-color: var(--bg);
+  border: 1.5px solid var(--border); border-radius: 1rem;
+  font-size: 1.4rem;
+  cursor: pointer; transition: all .15s;
+}
+.wthr__loc-btn:hover {border-color: var(--accent);}
+
+/*----- 로딩 / 에러 -----*/
+.wthr__loading {font-size: 1.4rem; color: var(--text-2);}
+.wthr__error {font-size: 1.4rem; color: var(--accent-2);}
+
+/*----- 날씨 카드 -----*/
+.wthr__card {
+  width: 100%; max-width: 48rem;
+  flex: 1;
+  display: flex; flex-direction: column; 
+  align-items: center; justify-content: space-evenly; 
+  gap: 0.3rem; padding: 3.2rem 2.4rem;
+  background-color: #f7faff; 
+  border: 1.5px solid var(--border); border-radius: var(--radius);
+}
+.wthr__city {text-align: center;}
+.wthr__city h2{font-size: 2.4rem; font-weight: 700;}
+.wthr__city p {font-size: 1.2rem; font-weight: 600; color: var(--text-2);}
+.wthr__main {display: flex; align-items: center; gap: 0.4rem; margin: 2rem 0;}
+.wthr__icon {width: 8rem; height: 8rem;}
+.wthr__temp {font-size: 5rem; font-weight: 300; letter-spacing: -2px;}
+.wthr__desc {font-style: 1.4rem; color: var(--text-2); text-transform: capitalize;}
+
+/*----- 상세 정보 -----*/
+.wthr__details {
+  width: 100%;
+  margin-top: 1.2rem;
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.8rem;
+}
+.wthr__detail-item {
+  display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+  padding: 1rem;
+  background-color: var(--surface);
+  border: 1.5px solid var(--border); border-radius: 1rem;
+}
+.wthr__detail-label {font-size: 1rem; font-weight: 600; color: var(--text-2);}
+.wthr__detail-value {font-size: 1.4rem; font-weight: 700; color: var(--text);}
+
+
+/*========== 모바일 ==========*/
+@media (max-width: 480px) {
+  .wthr__wrap { padding: 1.6rem; }
+  .wthr__details { grid-template-columns: repeat(2, 1fr); }
+  .wthr__temp { font-size: 4rem; }
+}

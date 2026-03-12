@@ -8,6 +8,7 @@ import Fortune from "./pages/Fortune";
 import Calendar from "./pages/Calendar";
 import News from "./pages/News";
 import Weather from "./pages/Weather";
+import Game from "./pages/Game";
 
 function App() {
   return(
@@ -21,6 +22,7 @@ function App() {
           <Route path="/Calendar" element={<Calendar />} />
           <Route path="/News" element={<News />} />
           <Route path="/Weather" element={<Weather />} />
+          <Route path="/Game" element={<Game />} />
         </Route>
       </Routes>
     </BrowserRouter>
