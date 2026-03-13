@@ -80,11 +80,13 @@ function Game() {
       {/* 정답 */}
       {status === 'correct' && (
         <div className="game__result">
-          <p className="game__emoji">🎉</p>
-          <h2 className="game__correct-msg">정답이에요!</h2>
+          <div className="game__correct-wrap">
+            <p className="game__emoji">🎉</p>
+            <h2 className="game__correct-msg">정답이에요!</h2>
+          </div>
           <p className="game__correct-num">정답은 <strong>{answer}</strong></p>
           <p className="game__correct-count">{count}번 만에 맞췄어요!</p>
-          <button className="game__btn" onClick={startGame}>🔄 다시하기</button>
+          <button className="game__btn reset" onClick={startGame}>🔄 다시하기</button>
         </div>
       )}
 

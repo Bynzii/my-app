@@ -6,6 +6,7 @@
   display: flex; align-items: center; justify-content: center;
   text-align: center;
 }
+/* 게임 시작전 */
 .game__start {display: flex; flex-direction: column; gap: 2rem;}
 .game__desc {font-size: 1.5rem;}
 .game__btn { border: none; outline: none; 
@@ -16,3 +17,34 @@
   transition: all .15s;
 }
 .game__btn:hover {filter: brightness(1.1);}
+
+/* 게임중 */
+.game__playing {display: flex; flex-direction: column; gap: 2rem;}
+.game__tries {font-size: 1.6rem;}
+.game__hint {font-size: 3.6rem; font-weight: 700; color: var(--accent);}
+.game__input-row {display: flex; align-items: center; justify-content: center; gap: 1.2rem;}
+.game__it {border: none; outline: none;
+  padding: 1.2rem 1.6rem;
+  background-color: var(--bg); border: 1.5px solid var(--border); border-radius: 1rem;
+  transition: border-color .15s;
+}
+.game__it:hover,.game__it:focus, .game__it:active {border-color: var(--accent);}
+.game__check-btn {
+  padding: 0.9rem 1.6rem;
+  background-color: var(--accent); color: #fff;
+  border: 1.5px solid var(--accent); border-radius: 1rem;
+  font-size: 1.4rem;
+  cursor: pointer; transition: all .15s;
+}
+.game__check-btn:hover {filter: brightness(1.1);}
+
+/* 정답 */
+.game__result {display: flex; flex-direction: column;}
+.game__correct-wrap { display: flex; align-items: center;}
+.game__emoji {font-size: 8rem;}
+.game__correct-msg {font-size: 2rem;}
+.game__correct-num {font-size: 2rem; display: flex; align-items: center; justify-content: center; gap: 0.8rem;}
+.game__correct-num strong {font-size: 4rem; color: var(--accent);}
+.game__correct-count {font-size: 1.4rem; margin: 0.8rem 0;}
+.game__btn.reset {background-color: var(--bg); border-color: var(--border); color: var(--text); transition: border-color .15s;}
+.game__btn.reset:hover {border-color: var(--accent); background-color: var(--bg);}
