@@ -54,13 +54,13 @@
 
 /* 이미지 */
 .news__img {
-  width: clamp(10rem, 15rem, 20rem); height: clamp(6rem, 12rem, 16rem);
+  width: clamp(10rem, 32vw, 30rem); height: clamp(6rem, 24vw, 20rem);
   object-fit: cover;
   border-radius: 0.8rem; flex-shrink: 0;
 }
 
 /* 텍스트 */
-.news__contnent {
+.news__content {
   flex: 1;
   display: flex; flex-direction: column; gap: 0.8rem;
   overflow: hidden;
@@ -83,5 +83,5 @@
     padding: 1.2rem 1.6rem 0;
     overflow-x: auto;
   }
-  .news__list {padding: 1.2rem 1.6rem 1.6rem;}
+  .news__list {padding: 1.6rem 0;}
 }
