@@ -6,6 +6,7 @@ const fortunes = [
   {grade: '길', className: 'good', emoji: '☀️', text: '좋은 기운이 함께합니다.'},
   {grade: '평', className: 'normal', emoji: '🌙', text: '평온한 하루가 될 거예요.'},
   {grade: '흉', className: 'bad',  emoji: '🌧', text: '오늘은 신중하게 행동하세요.'},
+  {grade: '최악', className: 'worst', emoji: '💀', text: '집 밖은 위험해요... 조심 또 조심!'},
 ]
 
 function Fortune() {

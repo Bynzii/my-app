@@ -36,6 +36,7 @@
 .fortune__grade.good   { color: var(--accent-4); }
 .fortune__grade.normal { color: var(--text-2); }
 .fortune__grade.bad    { color: var(--accent-2); }
+.fortune__grade.worst  { color: #000000; text-shadow: 0 0 10px rgba(0,0,0,0.2); }
 
 
 .fortune__btn {
