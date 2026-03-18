@@ -1,23 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import '../assets/css/Memo.css';
 
 function Memo() {
+  // 상태 선언
   const [memo, setMemo] = useState('');
-  const [todos, setTodos] = useState([]);
   const [input, setInput] = useState('');
+  const [todos, setTodos] = useState(() => {
+    try {
+      const savedTodo = localStorage.getItem('todos');
+      return savedTodo ? JSON.parse(savedTodo) : [];
+    } catch {
+      return [];
+    }
+  });
 
+  // 사이드 이펙트
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  },[todos]);
+
+  // 할일 추가
   const addTodo = () => {
     if (input.trim() === '') return;
     setTodos([...todos, { id: Date.now(), text: input, done: false }]);
     setInput('');
   };
 
+  // 할일 토글
   const toggleTodo = (id) => {
     setTodos(todos.map(todo => 
-      todo.id === id ? {...todo, done: !todo.done} : todo
+      todo.id === id ? {...todo, done : !todo.done} : todo
     ));
   };
 
+  // 할일 삭제
   const deleteTodo = (id) => {
     setTodos(todos.filter(todo => todo.id !== id));
   };

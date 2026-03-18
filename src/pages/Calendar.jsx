@@ -1,16 +1,28 @@
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import '../assets/css/Calendar.css'
 
 function Calendar() {
   const today = new Date();    
-
+  // 상태 선언
   const [year, setYear] = useState(today.getFullYear());
   const [month, setMonth] = useState(today.getMonth());
-  const [schedules, setSchedules] = useState([]);
   const [selected, setSelected] = useState(null);
   const [input, setInput] = useState('');
   const [isOpen, setIsopen] = useState(false);
+  const [schedules, setSchedules] = useState(() => {
+    try {
+      const saved = localStorage.getItem('schedules');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+
+  // 사이드 이펙트 > 스케줄 변경시 로컬스토리지에 저장
+  useEffect(() => {
+    localStorage.setItem('schedules', JSON.stringify(schedules))
+  }, [schedules]);
 
   // 이전달 / 다음달 
   const prevMonth = () => {

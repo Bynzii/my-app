@@ -17,7 +17,6 @@
   overflow: hidden;
 }
 
-
 .layout__nav {
   width: 100%; max-width: 120rem;
   display: grid; grid-template-columns: repeat(8, 1fr);
@@ -48,11 +47,9 @@
   font-weight: 600;
 }
 
-
-
 /*========== 모바일 ==========*/
 @media (max-width: 767px) {
-   .layout__nav {grid-template-columns: repeat(4, 1fr);}
+  .layout__nav {grid-template-columns: repeat(4, 1fr);}
 }
 
 @media (max-width: 480px) {
@@ -60,3 +57,4 @@
   .layout__nav {gap: 0.4rem;}
   .layout__nav-btn {padding: 1rem; gap: 0;}
 }
+
